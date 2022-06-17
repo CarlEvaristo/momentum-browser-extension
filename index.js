@@ -46,7 +46,7 @@ async function cryptoPrices(arrayOfCoins) {
 }
 
 //render crypto prices
-cryptoPrices(["Dogecoin", "Bitcoin", "Ethereum", "Cardano", "Bitcoin"])
+cryptoPrices(["Dogecoin", "Bitcoin"])
 
 //render background image and author's name
 backgroundImage()
