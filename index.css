@@ -1,15 +1,43 @@
 html {
     font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
 }
-
 body {
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
-    background-position: no-repeat center center fixed; 
+    background-position: no-repeat center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
 }
+p, h1 {
+    font-size: 2rem;
+    margin:0;
+    color:#fff;
+    text-shadow: 1px 1px 3px rgb(0, 0, 0);
+}
 
+h1 {
+    font-size: 5rem;
+}
+.container{
+    box-sizing: border-box;
+    padding: 2vw;
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#header {
+    display:flex;
+    justify-content: space-between;
+}
+#time {
+    text-align: center;
+}
+#author {
+    text-align: left;
+}
