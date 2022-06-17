@@ -52,6 +52,8 @@ cryptoPrices(["Dogecoin", "Bitcoin"])
 backgroundImage()
 
 //render time 
-const time = document.getElementById("time")
-time.textContent = (new Date).toLocaleTimeString()
+setInterval(()=>{
+    document.getElementById("time").textContent = (new Date).toLocaleTimeString()
+},1000)
+
 
