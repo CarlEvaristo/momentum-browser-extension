@@ -166,7 +166,7 @@ renderCryptoHtml()
 
 
 if (localStorage.getItem("coins") === null) {
-    JSON.parse(localStorage.setItem("coins", JSON.stringify(["Bitcoin", "Ethereum"])));
+    localStorage.setItem("coins", JSON.stringify(['Bitcoin', 'Ethereum']))
     renderCryptoHtml()
 }
 
