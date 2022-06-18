@@ -163,16 +163,17 @@ navigator.geolocation.getCurrentPosition(position => getWeather(position))
 getQuote()
 renderCryptoHtml()
 
-if (JSON.parse(localStorage.getItem("coins")).length === 0) {
-    localStorage.removeItem("coins")
-    location.reload()
-}
+
 
 if (localStorage.getItem("coins") === null) {
     JSON.parse(localStorage.setItem("coins", JSON.stringify(["Bitcoin", "Ethereum"])));
     renderCryptoHtml()
 }
 
+if (JSON.parse(localStorage.getItem("coins")).length === 0) {
+    localStorage.removeItem("coins")
+    location.reload()
+}
 
 // add crypto coins to list and call crypto render function
 cryptoBtn.addEventListener("click", () => {
