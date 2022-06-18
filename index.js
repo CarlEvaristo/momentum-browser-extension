@@ -83,7 +83,7 @@ function removeCoin(coinName) {
     console.log("Coin removed")
     renderCryptoHtml()
     if (coins.length <= 3) {
-        cryptoBtn.style.display= "inline"
+        // cryptoBtn.style.display= "inline"
         cryptoInput.style.display= "inline"
     }
 }
@@ -105,7 +105,7 @@ async function saveCoin(coinName) {
                 console.log("Coin saved")
                 renderCryptoHtml()
                 if (coins.length > 3) {
-                    cryptoBtn.style.display= "none"
+                    // cryptoBtn.style.display= "none"
                     cryptoInput.style.display= "none"
                 }
             }
@@ -176,7 +176,7 @@ if (JSON.parse(localStorage.getItem("coins")).length === 0) {
 }
 
 // add crypto coins to list and call crypto render function
-cryptoBtn.addEventListener("click", () => {
+cryptoInput.addEventListener("change", () => {
     saveCoin(cryptoInput.value)
     cryptoInput.value = ""
 })
