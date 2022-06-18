@@ -6,6 +6,7 @@
 const key = "l64Sk4kAeygdViL7Pku6kGTbBV6QMV5X0cWVblAnduI"
 // const secret = "9yfrd_b0bbZNCnA2stl0UfqVWRVC1xn81OcVH7x8t8A"
 
+//render background image and author's name
 async function backgroundImage() {
     try {
         // const response = await fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=${key}`)
@@ -22,6 +23,9 @@ async function backgroundImage() {
     }
 }
 
+backgroundImage()
+
+//render crypto prices
 async function cryptoPrices(arrayOfCoins) {
     for (let item of arrayOfCoins) {
         // code to request coin id
@@ -45,15 +49,27 @@ async function cryptoPrices(arrayOfCoins) {
     }
 }
 
-//render crypto prices
 cryptoPrices(["Dogecoin", "Bitcoin"])
 
-//render background image and author's name
-backgroundImage()
 
 //render time 
 setInterval(()=>{
     document.getElementById("time").textContent = (new Date).toLocaleTimeString()
 },1000)
+
+
+//render weather
+async function getWeather(position) {
+    const weatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=b1970f8b5bfac16ba049630faed3055e`)
+    const data = await weatherData.json()
+    document.getElementById("weather-temperature").innerHTML = ` <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"><p>${(data.main.temp - 273.15).toFixed(1)}°</p> `
+    document.getElementById("weather-location").textContent = data.name
+
+    console.log(data)
+}
+
+navigator.geolocation.getCurrentPosition(position => getWeather(position))
+
+    
 
 
