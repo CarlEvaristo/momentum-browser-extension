@@ -146,7 +146,7 @@ function welcomeMessage(newDate) {
 async function getWeather(position) {
     const weatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=b1970f8b5bfac16ba049630faed3055e`)
     const data = await weatherData.json()
-    document.getElementById("weather-temperature").innerHTML = ` <img src="http://openweathermap.org/img/wn/${data.weather[0].icon}.png"><p>${(data.main.temp - 273.15).toFixed(1)}°</p> `
+    document.getElementById("weather-temperature").innerHTML = ` <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png"><p>${(data.main.temp - 273.15).toFixed(1)}°</p> `
     document.getElementById("weather-location").textContent = data.name
 }
 
