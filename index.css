@@ -16,14 +16,17 @@ body {
     -o-background-size: cover;
     background-size: cover;
 }
-p, h1, li {
+p, h1, h2, h3, li {
     font-size: 2rem;
     margin:0;
     color:#fff;
-    text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.662);
+    text-shadow: 1px 1px 4px rgb(0, 0, 0);
 }
 h1 {
     font-size: 7rem;
+}
+h2 {
+    font-size: 5rem;
 }
 ul {
     list-style: none;
@@ -50,7 +53,11 @@ li img {
     display:flex;
     justify-content: space-between;
 }
-#time {
+#main {
+    position: fixed;
+    width:100vw;
+    height:100vh;
+    top:40vh;
     text-align: center;
 }
 #author {
@@ -63,4 +70,71 @@ li img {
 #weather-location {
     text-align: right;
     font-size: 1.8rem;
+}
+#welcome-box {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#nameInput {
+    display: inline;
+    margin:0.5em 0 0 1em;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 0.8em;
+    border:none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: 1px 1px 4px rgb(0, 0, 0);
+}
+#inputBtn {
+    margin:0.5em 0 0 0em;
+    display: inline;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 0.8em 2em;
+    border:none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+.delete {
+    margin: -1em 0 0 0;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border:none;
+    text-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+
+#cryptoInput {
+    display: inline;
+    margin:0.8em 0 0 0;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 1em;
+    border:none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+#cryptoBtn {
+    display: inline;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 1em;
+    border:none;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+#quoteTxt {
+    width: 50vw;
+    margin-top:2em;
+    margin-left:auto;
+    margin-right:auto;
+    font-size: 2.5rem;
+}
+#quoteAuthor {
+    margin-top:0.5em;
+    font-size: 2rem;
 }
