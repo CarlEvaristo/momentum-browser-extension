@@ -198,9 +198,10 @@ cryptoInput.addEventListener("change", () => {
 
 //render time and welcome message
 setInterval(()=>{
-    let newDate = new Date
-    // newDate = newDate.toLocaleString('en-US', {hour12: false})
-    document.getElementById("time").textContent = `${newDate.getHours()}:${newDate.getMinutes()}`
+    let newDate = new Date 
+    let hours = (newDate.getHours() < 10) ? "0" : "" + newDate.getHours()
+    let minutes = (newDate.getMinutes() < 10) ? "0" : "" + newDate.getMinutes()
+    document.getElementById("time").textContent = `${hours}:${minutes}`
     document.getElementById("welcome-message").textContent = welcomeMessage(newDate)
 },1000)
 
