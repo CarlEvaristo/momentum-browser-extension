@@ -8,7 +8,6 @@ const key = "l64Sk4kAeygdViL7Pku6kGTbBV6QMV5X0cWVblAnduI"
 
 const cryptoBox = document.getElementById("crypto")
 const inputBtn = document.getElementById("inputBtn")
-
 const nameInput = document.getElementById("nameInput")
 const deleteBtn =  document.getElementById("delete")
 
@@ -17,6 +16,22 @@ const cryptoBtn =  document.getElementById("cryptoBtn")
 
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
+
+nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
+nameInput.focus();
+nameInput.addEventListener("mouseover", ()=> {
+    inputBtn.style.visibility = "visible"
+})
+// nameInput.addEventListener("mouseout", ()=> {
+//     inputBtn.style.visibility = "hidden"
+// })
+// inputBtn.addEventListener("mouseover", ()=> {
+//     inputBtn.style.visibility = "visible"
+// })
+// inputBtn.addEventListener("mouseout", ()=> {
+//     inputBtn.style.visibility = "hidden"
+// })
+
 
 //render background image and author's name
 async function backgroundImage() {
@@ -126,27 +141,27 @@ function welcomeMessage(newDate) {
     let userName
     if (localStorage.getItem("momentum-name") === null) {
         userName = ""
-        inputBtn.style.display = "inline"
+        // inputBtn.style.display = "inline"
         nameInput.style.display = "inline"
         deleteBtn.style.display = "none"
     } else {
         userName = localStorage.getItem("momentum-name")
-        inputBtn.style.display = "none"
+        inputBtn.style.visibility = "hidden"
         nameInput.style.display = "none"
         deleteBtn.style.display = "inline"
     }
 
-    return (newDate.getHours() < 6) ? `Good night ${userName}` : 
-            (newDate.getHours() < 12) ? `Good morning ${userName}` : 
-            (newDate.getHours() < 18) ? `Good afternoon ${userName}` : 
-            `Good evening ${userName}`
+    return (newDate.getHours() < 6) ? `Good night, ${userName}` : 
+            (newDate.getHours() < 12) ? `Good morning, ${userName}` : 
+            (newDate.getHours() < 18) ? `Good afternoon, ${userName}` : 
+            `Good evening, ${userName}`
 }
 
 //render weather
 async function getWeather(position) {
     const weatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=b1970f8b5bfac16ba049630faed3055e`)
     const data = await weatherData.json()
-    document.getElementById("weather-temperature").innerHTML = ` <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png"><p>${(data.main.temp - 273.15).toFixed(1)}°</p> `
+    document.getElementById("weather-temperature").innerHTML = ` <img class="weather-img" src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png"><p>${(data.main.temp - 273.15).toFixed(1)}°</p> `
     document.getElementById("weather-location").textContent = data.name
 }
 
@@ -184,17 +199,21 @@ cryptoInput.addEventListener("change", () => {
 //render time and welcome message
 setInterval(()=>{
     let newDate = new Date
-    document.getElementById("time").textContent = newDate.toLocaleTimeString()
+    // newDate = newDate.toLocaleString('en-US', {hour12: false})
+    document.getElementById("time").textContent = `${newDate.getHours()}:${newDate.getMinutes()}`
     document.getElementById("welcome-message").textContent = welcomeMessage(newDate)
 },1000)
 
 //set username
 inputBtn.addEventListener("click", () => {
-    localStorage.setItem("momentum-name", nameInput.value)
-    inputBtn.style.display = "none"
-    nameInput.style.display = "none"
-    deleteBtn.style.display = "inline"
-    nameInput.value = ""
+    if (nameInput.value !== "") {
+        localStorage.setItem("momentum-name", nameInput.value)
+        inputBtn.style.display = "none"
+        nameInput.style.display = "none"
+        deleteBtn.style.display = "inline"
+        nameInput.value = ""
+    }
+
 })
 
 //remove username
