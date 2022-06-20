@@ -12,7 +12,6 @@ const nameInput = document.getElementById("nameInput")
 const deleteBtn =  document.getElementById("delete")
 
 const cryptoInput = document.getElementById("cryptoInput")
-const cryptoBtn =  document.getElementById("cryptoBtn")
 
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
@@ -71,8 +70,9 @@ async function renderCryptoHtml() {
             let newCoinEl = document.createElement("li")
             let coinImgEl = document.createElement("img")
             coinImgEl.src = coinImg
-            let coinNameEl = document.createElement("p")
-            coinNameEl.textContent = `${coin.name}: $ ${coinPrice}`
+            let coinTextEl = document.createElement("p")
+            coinTextEl.textContent = `${coin.name}: $ ${coinPrice}`
+            coinTextEl.classList.add("coin-text")
             
             //remove button (was difficult)
             let coinBtnEl = document.createElement("button")
@@ -80,7 +80,7 @@ async function renderCryptoHtml() {
             coinBtnEl.className = "fa-solid fa-trash-can delete"
 
             newCoinEl.appendChild(coinImgEl)
-            newCoinEl.appendChild(coinNameEl)
+            newCoinEl.appendChild(coinTextEl)
             newCoinEl.appendChild(coinBtnEl)
             cryptoBox.appendChild(newCoinEl)
         }
@@ -98,7 +98,6 @@ function removeCoin(coinName) {
     console.log("Coin removed")
     renderCryptoHtml()
     if (coins.length <= 3) {
-        // cryptoBtn.style.display= "inline"
         cryptoInput.style.display= "inline"
     }
 }
@@ -120,7 +119,6 @@ async function saveCoin(coinName) {
                 console.log("Coin saved")
                 renderCryptoHtml()
                 if (coins.length > 3) {
-                    // cryptoBtn.style.display= "none"
                     cryptoInput.style.display= "none"
                 }
             }
