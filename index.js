@@ -15,7 +15,7 @@ const cryptoInput = document.getElementById("cryptoInput")
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
 
-nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
+nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-3.3);
 nameInput.focus();
 nameInput.addEventListener("mouseover", ()=> {
     inputBtn.style.visibility = "visible"
