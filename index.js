@@ -25,8 +25,8 @@ async function backgroundImage() {
         const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
         const data = await response.json()
         console.log(data)
-        // render author's name bottom left of screen
-        document.getElementById("author").textContent = `Photo by: ${data.user.name}`
+        // render author's name and photo location (if available) on bottom left of screen
+        document.getElementById("author").textContent = `Photo by: ${data.user.name}. ${(data.location.name === null) ? "" : "Location: " + data.location.name}`
         document.body.style.backgroundImage = `url(${data.urls.full})`
     } 
     catch (err) {
