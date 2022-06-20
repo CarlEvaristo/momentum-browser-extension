@@ -1,8 +1,3 @@
-/**
- * URL: https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature
- * https://css-tricks.com/perfect-full-page-background-image/#awesome-easy-progressive-css3-way)
- */
-
 const key = "l64Sk4kAeygdViL7Pku6kGTbBV6QMV5X0cWVblAnduI"
 
 const cryptoBox = document.getElementById("crypto")
@@ -10,6 +5,7 @@ const nameInput = document.getElementById("nameInput")
 const deleteBtn =  document.getElementById("delete")
 
 const cryptoInput = document.getElementById("cryptoInput")
+const cryptoPlus = document.getElementById("cryptoPlus")
 
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
@@ -17,7 +13,10 @@ const quoteAuthor = document.getElementById("quoteAuthor")
 nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
 nameInput.focus();
 
-
+cryptoPlus.addEventListener("click", () => {
+    cryptoInput.style.visibility = "visible"
+    cryptoPlus.style.display = "none"
+})
 
 //render background image and author's name
 async function backgroundImage() {
@@ -86,7 +85,8 @@ function removeCoin(coinName) {
     console.log("Coin removed")
     renderCryptoHtml()
     if (coins.length <= 3) {
-        cryptoInput.style.display= "inline"
+        cryptoPlus.style.display= "inline"
+        cryptoInput.style.visibility= "hidden"
     }
 }
 
@@ -106,8 +106,10 @@ async function saveCoin(coinName) {
                 localStorage.setItem("coins", JSON.stringify(coins));
                 console.log("Coin saved")
                 renderCryptoHtml()
+                cryptoPlus.style.display= "inline"
+                cryptoInput.style.visibility= "hidden"
                 if (coins.length > 3) {
-                    cryptoInput.style.display= "none"
+                    cryptoPlus.style.display= "none"
                 }
             }
         } else {
