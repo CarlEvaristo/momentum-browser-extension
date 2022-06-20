@@ -171,7 +171,7 @@ li img {
         font-size:  18rem;
     }
     #welcome-message {
-        font-size:  4rem;
+        font-size:  6rem;
     }
     #nameInput {
         font-size:  4rem;
@@ -183,11 +183,11 @@ li img {
         font-size: 3rem;
     }
     #quoteTxt { 
-        width: 80vw;
-        font-size:  3rem;
+        width: 90vw;
+        font-size:  4rem;
     } 
     #quoteAuthor {
-        font-size:  2.5rem;
+        font-size:  3rem;
     }
     p {
         font-size:  3rem;
