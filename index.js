@@ -84,10 +84,9 @@ function removeCoin(coinName) {
     localStorage.setItem("coins", JSON.stringify(coins));
     console.log("Coin removed")
     renderCryptoHtml()
-    if (coins.length <= 3) {
+    if (coins.length <= 5) {
         cryptoPlus.style.display= "inline"
         cryptoInput.style.display = "none"
-    }
 }
 
 //save crypto coin
@@ -108,7 +107,7 @@ async function saveCoin(coinName) {
                 renderCryptoHtml()
                 cryptoPlus.style.display= "inline"
                 cryptoInput.style.display = "none"
-                if (coins.length > 3) {
+                if (coins.length > 4) {
                     cryptoPlus.style.display= "none"
                 }
             }
