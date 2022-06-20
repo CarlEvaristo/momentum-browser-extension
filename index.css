@@ -79,7 +79,17 @@ li img {
     justify-content: center;
     align-items: center;
 }
-
+/* #nameInput {
+    display: inline;
+    margin:0.5em 0 0 1em;
+    box-sizing: border-box;
+    font-size: inherit;
+    padding: 0.8em;
+    border:none;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: 1px 1px 4px rgb(0, 0, 0);
+} */
 #nameInput {
     font-family: inherit;
     font-size: 5rem;
@@ -125,6 +135,20 @@ li img {
     border:none;
     text-shadow: 1px 1px 2px rgb(0, 0, 0);
 }
+
+/* #cryptoInput {
+    display: inline;
+    margin:0.8em 0 0 0;
+    box-sizing: border-box;
+    font-size: 2rem;
+    padding: 0.5em 0;
+    border:none;
+    border-top-left-radius: 6px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 2px rgb(0, 0, 0);
+}
+#cryptoInput select {height: 35px;}
+#cryptoInput:active {outline: none;} */
 
 select {
     /* styling */
@@ -231,9 +255,6 @@ select:-moz-focusring {
     #author {
         font-size: 3rem;
         text-align: left;
-    }
-    .weather-temp{
-        font-size: 4rem;
     }
     #weather-location {
         font-size: 3rem;
