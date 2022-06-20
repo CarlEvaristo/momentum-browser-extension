@@ -167,24 +167,33 @@ li img {
     #main {
         top:40vh;
     }
-    .coin-text {
+    #time {
+        font-size:  18rem;
+    }
+    #welcome-message {
         font-size:  4rem;
     }
+    #nameInput {
+        font-size:  4rem;
+    }
+    .coin-text {
+        font-size:  3rem;
+    }
     #cryptoInput {
-        font-size: 4rem;
+        font-size: 3rem;
     }
     #quoteTxt { 
         width: 80vw;
-        font-size:  4rem;
+        font-size:  3rem;
     } 
     #quoteAuthor {
-        font-size:  3rem;
+        font-size:  2.5rem;
     }
     p {
         font-size:  3rem;
     }
     #author {
-        font-size: 4rem;
+        font-size: 3rem;
         text-align: left;
     }
     #weather-temperature {

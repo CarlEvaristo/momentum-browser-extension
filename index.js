@@ -4,7 +4,6 @@
  */
 
 const key = "l64Sk4kAeygdViL7Pku6kGTbBV6QMV5X0cWVblAnduI"
-// const secret = "9yfrd_b0bbZNCnA2stl0UfqVWRVC1xn81OcVH7x8t8A"
 
 const cryptoBox = document.getElementById("crypto")
 const inputBtn = document.getElementById("inputBtn")
