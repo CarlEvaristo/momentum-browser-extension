@@ -39,7 +39,9 @@ async function backgroundImage() {
 //render crypto prices
 async function renderCryptoHtml() {
     let coins = JSON.parse(localStorage.getItem("coins"));
-
+    if (coins.length > 4) {
+        cryptoPlus.style.display= "none"
+    }
     try {
         cryptoBox.innerHTML = ""    
         for (let item of coins) {
@@ -50,8 +52,9 @@ async function renderCryptoHtml() {
             // code to request coin price
             let response3 = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}`)
             let data3 = await response3.json()
+            console.log(data3)
             let coinPrice = data3.market_data.current_price.usd   // 4 deciaml places
-            let coinImg = data3.image.small
+            let coinImg = data3.image.thumb
             // code to create/append html element
             let newCoinEl = document.createElement("li")
             let coinImgEl = document.createElement("img")
