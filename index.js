@@ -87,6 +87,7 @@ function removeCoin(coinName) {
     if (coins.length <= 5) {
         cryptoPlus.style.display= "inline"
         cryptoInput.style.display = "none"
+    }
 }
 
 //save crypto coin
