@@ -6,7 +6,6 @@
 const key = "l64Sk4kAeygdViL7Pku6kGTbBV6QMV5X0cWVblAnduI"
 
 const cryptoBox = document.getElementById("crypto")
-const inputBtn = document.getElementById("inputBtn")
 const nameInput = document.getElementById("nameInput")
 const deleteBtn =  document.getElementById("delete")
 
@@ -15,20 +14,9 @@ const cryptoInput = document.getElementById("cryptoInput")
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
 
-nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-3.3);
+nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
 nameInput.focus();
-nameInput.addEventListener("mouseover", ()=> {
-    inputBtn.style.visibility = "visible"
-})
-// nameInput.addEventListener("mouseout", ()=> {
-//     inputBtn.style.visibility = "hidden"
-// })
-// inputBtn.addEventListener("mouseover", ()=> {
-//     inputBtn.style.visibility = "visible"
-// })
-// inputBtn.addEventListener("mouseout", ()=> {
-//     inputBtn.style.visibility = "hidden"
-// })
+
 
 
 //render background image and author's name
@@ -76,7 +64,8 @@ async function renderCryptoHtml() {
             //remove button (was difficult)
             let coinBtnEl = document.createElement("button")
             coinBtnEl.id = coin.name
-            coinBtnEl.className = "fa-solid fa-trash-can delete"
+            coinBtnEl.className = "delete"
+            coinBtnEl.innerHTML = "x"
 
             newCoinEl.appendChild(coinImgEl)
             newCoinEl.appendChild(coinTextEl)
@@ -138,12 +127,10 @@ function welcomeMessage(newDate) {
     let userName
     if (localStorage.getItem("momentum-name") === null) {
         userName = ""
-        // inputBtn.style.display = "inline"
         nameInput.style.display = "inline"
         deleteBtn.style.display = "none"
     } else {
         userName = localStorage.getItem("momentum-name")
-        inputBtn.style.visibility = "hidden"
         nameInput.style.display = "none"
         deleteBtn.style.display = "inline"
     }
@@ -202,17 +189,17 @@ setInterval(()=>{
     document.getElementById("welcome-message").textContent = welcomeMessage(newDate)
 },1000)
 
-//set username
-inputBtn.addEventListener("click", () => {
-    if (nameInput.value !== "") {
-        localStorage.setItem("momentum-name", nameInput.value)
-        inputBtn.style.display = "none"
-        nameInput.style.display = "none"
-        deleteBtn.style.display = "inline"
-        nameInput.value = ""
+//set username by pressing enter key
+nameInput.addEventListener('keypress', event => {
+    if (event.key === 'Enter') {
+        if (nameInput.value !== "") {
+            localStorage.setItem("momentum-name", nameInput.value)
+            nameInput.style.display = "none"
+            deleteBtn.style.display = "inline"
+            nameInput.value = ""
+        }
     }
-
-})
+});
 
 //remove username
 deleteBtn.addEventListener("click", () => {
