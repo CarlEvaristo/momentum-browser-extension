@@ -34,8 +34,8 @@ nameInput.addEventListener("mouseover", ()=> {
 //render background image and author's name
 async function backgroundImage() {
     try {
-        // const response = await fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=${key}`)
-        const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+        const response = await fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=${key}`)
+        // const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
         const data = await response.json()
         
         // render author's name bottom left of screen
