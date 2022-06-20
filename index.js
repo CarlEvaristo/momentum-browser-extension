@@ -14,7 +14,7 @@ nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
 nameInput.focus();
 
 cryptoPlus.addEventListener("click", () => {
-    cryptoInput.style.visibility = "visible"
+    cryptoInput.style.display = "inline"
     cryptoPlus.style.display = "none"
 })
 
@@ -86,7 +86,7 @@ function removeCoin(coinName) {
     renderCryptoHtml()
     if (coins.length <= 3) {
         cryptoPlus.style.display= "inline"
-        cryptoInput.style.visibility= "hidden"
+        cryptoInput.style.display = "none"
     }
 }
 
@@ -107,7 +107,7 @@ async function saveCoin(coinName) {
                 console.log("Coin saved")
                 renderCryptoHtml()
                 cryptoPlus.style.display= "inline"
-                cryptoInput.style.visibility= "hidden"
+                cryptoInput.style.display = "none"
                 if (coins.length > 3) {
                     cryptoPlus.style.display= "none"
                 }
