@@ -10,7 +10,7 @@ body {
     font-size: 1.6rem;
     margin: 0;
     padding: 0;
-    background-position: no-repeat center fixed; 
+    background-position: no-repeat center bottom fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -61,8 +61,25 @@ li img {
     top:30vh;
     text-align: center;
 }
+#footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
 #author {
     text-align: left;
+}
+#media-buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    z-index: 1000;
+}
+#media-buttons img{
+    width: 5vw;
+    border-radius: 10px;
+    margin-top: 1em;
+    box-shadow: 1px 1px 4px rgb(0, 0, 0);
 }
 #weather-temperature {
     display:flex;
@@ -164,7 +181,9 @@ li img {
     border-radius: 20%;
     box-shadow: 1px 1px 1px rgb(0, 0, 0);
 }
-
+.coin-text {
+    font-size:  2rem;
+}
 #quoteTxt {
     width: 50vw;
     margin-top:2em;

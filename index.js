@@ -10,21 +10,13 @@ const cryptoPlus = document.getElementById("cryptoPlus")
 const quoteText = document.getElementById("quoteTxt")
 const quoteAuthor = document.getElementById("quoteAuthor")
 
-nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
-nameInput.focus();
-
-cryptoPlus.addEventListener("click", () => {
-    cryptoInput.style.display = "inline"
-    cryptoPlus.style.display = "none"
-})
 
 //render background image and author's name
 async function backgroundImage() {
     try {
-        // const response = await fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=nature&client_id=${key}`)
-        const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
+        const response = await fetch(`https://api.unsplash.com/photos/random?orientation=landscape&query=miami%20beach&client_id=${key}`)
+        // const response = await fetch("https://apis.scrimba.com/unsplash/photos/random?orientation=landscape&query=nature")
         const data = await response.json()
-        console.log(data)
         // render author's name and photo location (if available) on bottom left of screen
         document.getElementById("author").textContent = `Photo by: ${data.user.name}. ${(data.location.name === null) ? "" : "Location: " + data.location.name}`
         document.body.style.backgroundImage = `url(${data.urls.full})`
@@ -46,13 +38,23 @@ async function renderCryptoHtml() {
         cryptoBox.innerHTML = ""    
         for (let item of coins) {
             // code to request coin id
-            let response1 = await fetch(`https://api.coingecko.com/api/v3/coins/list`)
+            let response1 = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "mode":'no-cors'
+                }
+            })
+
             let data1 = await response1.json()
             let coin = data1.filter(coin => coin.name === item)[0]
             // code to request coin price
-            let response3 = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}`)
+            let response3 = await fetch(`https://api.coingecko.com/api/v3/coins/${coin.id}`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "mode":'no-cors'
+                }
+            })
             let data3 = await response3.json()
-            console.log(data3)
             let coinPrice = data3.market_data.current_price.usd   // 4 deciaml places
             let coinImg = data3.image.thumb
             // code to create/append html element
@@ -100,7 +102,12 @@ async function saveCoin(coinName) {
        if (!coins.includes(coinName)) {
 
             //check if coin exists
-            let res = await fetch(`https://api.coingecko.com/api/v3/coins/list`)
+            let res = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
+                headers: {
+                    "Content-Type": "application/json",
+                    "mode":'no-cors'
+                }
+            })
             let data = await res.json()
             let coin = data.filter(coin => coin.name === coinName)[0]
 
@@ -162,11 +169,20 @@ async function getQuote() {
     quoteAuthor.textContent = data[randomNum].author
 }
 
+//RUN CODE
+
 backgroundImage()
 navigator.geolocation.getCurrentPosition(position => getWeather(position))
 getQuote()
 renderCryptoHtml()
 
+nameInput.setAttribute('size', nameInput.getAttribute('placeholder').length-2);
+nameInput.focus();
+
+cryptoPlus.addEventListener("click", () => {
+    cryptoInput.style.display = "inline"
+    cryptoPlus.style.display = "none"
+})
 
 
 if (localStorage.getItem("coins") === null) {
